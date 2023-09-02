@@ -8,21 +8,36 @@ require([
   ], function(esriConfig, WebMap, MapView, ScaleBar, Legend,Home) {
     esriConfig.apiKey = "AAPKba72e0ab5a174570a5d7166a8626a797Rd6BTFGhgavDcZZV9osrEfz6Q4U0Dxu4y4Z7CTX6pgovODIt6ttFxwcQTXWMXvTB"
 
-   const webMap = new WebMap({
-    portalItem: {
-        id: "232b4d297d054b2a831a3ce629ac8495"
-    }
-   })
+    const webMap = new WebMap({
+        portalItem: {
+           id: "232b4d297d054b2a831a3ce629ac8495"
+        }
+    })
 
-   const view = new MapView({
-   container: "viewDiv",
-   map: webMap 
-   });
+    const view = new MapView({
+        container: "viewDiv",
+        map: webMap 
+    });
 
-   const homeBtn = new Home({
-       view: view
-   })
+    const homeBtn = new Home({
+        view: view
+    })
 
-   view.ui.add(homeBtn, "top-left")
+   view.ui.add(homeBtn, "top-left");
 
+    const legend = new Legend({
+        view: view
+    })
+  
+    view.ui.add(legend, "bottom-left");
+
+    const scalebar = new ScaleBar({
+        view: view,
+        unit: "metric",
+        style: "ruler"
+    })
+
+    view.ui.add(scalebar, "bottom-right");
 })
+
+
